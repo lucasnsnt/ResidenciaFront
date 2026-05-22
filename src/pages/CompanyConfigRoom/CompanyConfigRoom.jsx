@@ -228,7 +228,7 @@ useEffect(() => {
   return (
     <div className="config-container">
       {/* Sidebar */}
-      <aside className="config-sidebar">
+      <aside className="config-sidebar company-config-sidebar">
         <div className="sidebar-top">
           <h1 className="config-title">Painel de Estratégia</h1>
           <span className="config-title-accent" />
@@ -237,39 +237,41 @@ useEffect(() => {
           </p>
         </div>
 
-        <div className={`balance-card ${saldoRestante < 0 ? 'insufficient-funds' : ''}`}>
-          <span className="balance-label">Saldo Disponível</span>
-          <strong className="balance-value">{fmt(saldoRestante)}</strong>
-          {/* Detalhamento de Gastos 
-          <div className="gasto-detalhamento">
-            <div className="gasto-item">
-              <span className="gasto-label">CAPEX</span>
-              <span className="gasto-valor">{fmt(totalCapex)}</span>
-            </div>
-            <div className="gasto-item">
-              <span className="gasto-label">Estoque</span>
-              <span className="gasto-valor">{fmt(custoEstoque)}</span>
-            </div>
-            <div className="gasto-item">
-              <span className="gasto-label">Pessoal</span>
-              <span className="gasto-valor">{fmt(custoPessoal)}</span>
-            </div>
-            <div className="gasto-item gasto-total">
-              <span className="gasto-label">Total Gastos</span>
-              <span className="gasto-valor">{fmt(totalGastos)}</span>
-            </div>
-          </div>*/}
-          <span className="balance-hint">Gasto: {fmt(totalGastos)}</span>
-          {excedente > 0 && (
-            <div className="juros-alert">
-              ⚠️ Excedente: {fmt(excedente)} → Juros de {params.juros}%: {fmt(jurosPrevistos)}
-            </div>
-          )}
-        </div>
+        <div className="sidebar-metrics">
+          <div className={`balance-card ${saldoRestante < 0 ? 'insufficient-funds' : ''}`}>
+            <span className="balance-label">Saldo Disponível</span>
+            <strong className="balance-value">{fmt(saldoRestante)}</strong>
+            {/* Detalhamento de Gastos 
+            <div className="gasto-detalhamento">
+              <div className="gasto-item">
+                <span className="gasto-label">CAPEX</span>
+                <span className="gasto-valor">{fmt(totalCapex)}</span>
+              </div>
+              <div className="gasto-item">
+                <span className="gasto-label">Estoque</span>
+                <span className="gasto-valor">{fmt(custoEstoque)}</span>
+              </div>
+              <div className="gasto-item">
+                <span className="gasto-label">Pessoal</span>
+                <span className="gasto-valor">{fmt(custoPessoal)}</span>
+              </div>
+              <div className="gasto-item gasto-total">
+                <span className="gasto-label">Total Gastos</span>
+                <span className="gasto-valor">{fmt(totalGastos)}</span>
+              </div>
+            </div>*/}
+            <span className="balance-hint">Gasto: {fmt(totalGastos)}</span>
+            {excedente > 0 && (
+              <div className="juros-alert">
+                ⚠️ Excedente: {fmt(excedente)} → Juros de {params.juros}%: {fmt(jurosPrevistos)}
+              </div>
+            )}
+          </div>
 
-        <div className="cesta-resumo">
-          <span className="balance-label">Preço Final da Cesta</span>
-          <strong className="balance-value">{fmt(precoCesta)}</strong>
+          <div className="cesta-resumo">
+            <span className="balance-label">Preço Final da Cesta</span>
+            <strong className="balance-value">{fmt(precoCesta)}</strong>
+          </div>
         </div>
       </aside>
 

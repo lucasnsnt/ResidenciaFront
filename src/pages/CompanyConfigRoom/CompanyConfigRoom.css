@@ -1,15 +1,48 @@
 /* CompanyConfigRoom.css — Estilos exclusivos da página de config da empresa */
 
-/* ── Card de saldo no sidebar ── */
+/* ── Resumos financeiros no sidebar ── */
+.company-config-sidebar {
+  justify-content: flex-start;
+}
+
+.sidebar-metrics {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-top: auto;
+}
+
 .balance-card {
   position: relative;
   z-index: 1;
-  background: rgba(255, 255, 255, 0.1);
-  backdrop-filter: blur(8px);
-  border: 1px solid rgba(255, 255, 255, 0.15);
-  border-radius: 12px;
-  padding: 24px;
+  overflow: hidden;
+  background: linear-gradient(145deg, rgba(255, 255, 255, 0.16), rgba(255, 255, 255, 0.07));
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  border-radius: 8px;
+  padding: 22px 24px;
+  box-shadow: 0 18px 42px rgba(3, 31, 54, 0.18);
   transition: background-color 0.3s, transform 0.3s;
+}
+
+.balance-card::before,
+.cesta-resumo::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 0;
+  left: 0;
+  pointer-events: none;
+  background: linear-gradient(90deg, rgba(255, 105, 10, 0.55), transparent 44%);
+  opacity: 0;
+  height: 3px;
+}
+
+.balance-card::before {
+  opacity: 1;
 }
 
 .balance-label {
@@ -64,11 +97,17 @@
 .cesta-resumo {
   position: relative;
   z-index: 1;
-  background: rgba(255, 255, 255, 0.07);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  border-radius: 12px;
-  padding: 18px 24px;
-  margin-top: 16px;
+  overflow: hidden;
+  background: rgba(255, 255, 255, 0.09);
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  border-radius: 8px;
+  padding: 18px 24px 20px;
+  box-shadow: 0 14px 34px rgba(3, 31, 54, 0.12);
+}
+
+.cesta-resumo::before {
+  opacity: 0.55;
 }
 
 /* ── Hint de seção ── */
@@ -296,6 +335,16 @@
 
 /* ── Responsividade ── */
 @media (max-width: 900px) {
+  .company-config-sidebar {
+    justify-content: space-between;
+  }
+
+  .sidebar-metrics {
+    width: min(360px, 48vw);
+    flex-shrink: 0;
+    margin-top: 0;
+  }
+
   .balance-card {
     padding: 16px 20px;
     min-width: 200px;
@@ -311,6 +360,10 @@
 }
 
 @media (max-width: 540px) {
+  .sidebar-metrics {
+    width: 100%;
+  }
+
   .balance-card {
     width: 100%;
     min-width: unset;
